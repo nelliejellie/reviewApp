@@ -41,7 +41,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {AppLoading} from 'expo';
 import { useFonts } from 'expo-font';
 import Home from './screens/home';
-import About from './screens/about';
+import Details from './screens/details';
+import { color } from 'react-native-reanimated';
 
 
 
@@ -59,9 +60,28 @@ function App() {
   if (fontsLoaded){
     return (
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="About" component={About} />  
+        <Stack.Navigator
+          screenOptions={{
+            title:'home',
+            headerStyle:{
+              backgroundColor:'#968888',
+            },
+            headerTitleStyle:{
+              fontFamily:'Biggie',
+            }
+          }}
+        >
+          <Stack.Screen
+           name="Home"
+           component={Home}
+           options={{
+             title:'home',
+            //  headerStyle:{
+            //    backgroundColor:'red',
+            //  }
+           }}
+            />
+          <Stack.Screen name="Details" component={Details} options={({route})=>({title:route.params.title})} />  
         </Stack.Navigator>
       </NavigationContainer>
     );

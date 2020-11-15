@@ -1,18 +1,30 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, Button } from 'react-native';
 import {globalStyles} from '../styles/global'
 
 
 export default function Home({navigation}) {
-
+  const [tvshows, setTvshow] = useState([
+    {title:'blood of zeus', detail:'animation on zeus son', key: '1'},
+    {title:'helstrom', detail:'a movie on family possesion', key: '2'},
+    {title:'tough love', detail:'a nigerian soap opera about two beautiful girls', key: '3'},
+  ])
+  console.log(tvshows)
   const MoveToAbout = () =>{
-    navigation.navigate('About')
+    navigation.navigate('Details')
   }
 
   return (
     <View style={globalStyles.home}>
-      <Text style={globalStyles.homeText}>Home Screen</Text>
-      <Button onPress={MoveToAbout} title='go to about'/>
+      <FlatList
+        data = {tvshows}
+        renderItem = {({item})=>(
+          <TouchableOpacity onPress={()=>(navigation.navigate('Details', item))}>
+            <Text style={globalStyles.homeText}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+      />
+      {/* <Button title='click' onPress={()=>{navigation.navigate('Details')}}/> */}
     </View>
   );
 }
