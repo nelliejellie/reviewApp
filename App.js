@@ -1,36 +1,4 @@
-// import React, {useState} from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
-// import Home from './screens/home';
-// import {AppLoading} from 'expo';
-// import { useFonts } from 'expo-font';
-// //import Navigator from './routes/homeStack'
-// import { createStackNavigator } from '@react-navigation/native';
-// import { NavigationContainer } from '@react-navigation/native';
 
-// const Stack = createStackNavigator();
-
-
-// export default function App() {
-//  // function for loading fonts
-// let [fontsLoaded] = useFonts({
-//   'Biggie': require('./assets/fonts/BigShouldersStencilText-Black.ttf'),
-// });
-
-//   if(fontsLoaded){
-//     return (
-//       <NavigationContainer>
-//         <Stack.Navigator>
-//           <Stack.Screen name="Home" component={Home} />
-//         </Stack.Navigator>
-//       </NavigationContainer>
-//     );
-//   }else{
-//     return(
-//       <AppLoading/>
-//     )
-//   }
-  
-// }
 
 // In App.js in a new project
 
@@ -42,16 +10,20 @@ import {AppLoading} from 'expo';
 import { useFonts } from 'expo-font';
 import Home from './screens/home';
 import Details from './screens/details';
+import About from './screens/about';
 import { color } from 'react-native-reanimated';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
 
 
 
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 
 
-function App() {
+function HomeAndDetails() {
   // loading a new font into the app
   let [fontsLoaded] = useFonts({
        'Biggie': require('./assets/fonts/BigShouldersStencilText-Black.ttf'),
@@ -59,31 +31,24 @@ function App() {
 
   if (fontsLoaded){
     return (
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            title:'home',
-            headerStyle:{
-              backgroundColor:'#968888',
-            },
-            headerTitleStyle:{
-              fontFamily:'Biggie',
-            }
-          }}
-        >
-          <Stack.Screen
-           name="Home"
-           component={Home}
-           options={{
-             title:'home',
-            //  headerStyle:{
-            //    backgroundColor:'red',
-            //  }
-           }}
-            />
-          <Stack.Screen name="Details" component={Details} options={({route})=>({title:route.params.title})} />  
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          title:'home',
+          headerStyle:{
+            backgroundColor:'#968888',
+          },
+          headerTitleStyle:{
+            fontFamily:'Biggie',
+          }
+        }}
+      >
+        <Stack.Screen
+        name="Home"
+        component={Home}
+        />
+        <Stack.Screen name="Details" component={Details} options={({route})=>({title:route.params.title})} /> 
+          
+      </Stack.Navigator>
     );
   }
   return <AppLoading />
@@ -91,5 +56,21 @@ function App() {
 
   }
 
+  function App(){
+    return(
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen name='Home' component={HomeAndDetails}/>
+          <Drawer.Screen name='about' component={About}/>
+        </Drawer.Navigator>
+      </NavigationContainer>
+    )
+  }
+
 export default App;
 
+//the function in stack.screen passes the data in the home.js and give the header of the details screen the title
+// the screenOptions prop in stack.navigator sets a default styling option to the header of all screens and can be easily overriden
+// by using an options prop in the stack.screen
+
+// the navigation container should only be used in the app function
