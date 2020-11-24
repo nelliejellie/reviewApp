@@ -17,8 +17,10 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 
-
+// stack navigator variable
 const Stack = createStackNavigator();
+
+// drawer navigator variable
 const Drawer = createDrawerNavigator();
 
 
