@@ -1,4 +1,4 @@
-import { StyleSheet} from 'react-native';
+import { Modal, StyleSheet} from 'react-native';
 
 export const globalStyles = StyleSheet.create({
     container: {
@@ -24,6 +24,21 @@ export const globalStyles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       },
+    centreIcon:{
+      alignItems: 'center',
+      justifyContent: 'center',
+      },
+    input:{
+      borderRadius:6,
+      padding:10,
+      borderWidth:1,
+      fontSize:18,
+      borderColor:'blue',
+      margin:10,
+    },
+    modalContent:{
+      flex:1,
+    },
   });
 
 

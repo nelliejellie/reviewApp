@@ -35,7 +35,7 @@ function HomeAndDetails() {
     return (
       <Stack.Navigator
         screenOptions={{
-          title:'home',
+          title:'Check our reviews',
           headerStyle:{
             backgroundColor:'#968888',
           },
