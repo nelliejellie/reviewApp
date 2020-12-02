@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList, Button, Modal } from 'react-native';
+import { Text, View, TouchableOpacity, FlatList, Button, Modal } from 'react-native';
 import {globalStyles} from '../styles/global';
 import Card from '../shared/card';
 import { MaterialIcons } from '@expo/vector-icons'; 
