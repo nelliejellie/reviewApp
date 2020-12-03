@@ -9,8 +9,8 @@ export default function Details({navigation, route}) {
     return (
       <Card>
         <View style={globalStyles.home}>
-            <Text style={globalStyles.homeText}>{route.params.title}</Text>
-            <Text style={globalStyles.homeText}>{route.params.detail}</Text>
+            <Text style={globalStyles.homeText}>{route.params.name}</Text>
+            <Text style={globalStyles.homeText}>{route.params.username}</Text>
             <View style={globalStyles.ratingView}>
               <Text style={globalStyles.homeText}>rating -</Text>
               <Image source={images.ratings[myRating]} style={globalStyles.image} /> 
